@@ -18,15 +18,28 @@ class LdapOps(LdapInit):
     def __init__(self, ldap_server=None, ldap_user=None, ldap_pwd=None):
         super().__init__(ldap_server, ldap_user, ldap_pwd)
 
+    # def ldap_get_uid(self, ldap_search_base):
+    #     uidlist = []
+    #     conn = self.ldap_conn()
+    #     status, result, response, _ = conn.search(ldap_search_base, '(objectclass=*)', attributes=['*'])
+    #     for i in response:
+    #         searchObj = re.search('uid=\w+', i['dn'])
+    #         if searchObj:
+    #             uidlist.append(searchObj.group().strip('uid='))
+    #     return uidlist
+
+
     def ldap_get_uid(self, ldap_search_base):
         uidlist = []
         conn = self.ldap_conn()
         status, result, response, _ = conn.search(ldap_search_base, '(objectclass=*)', attributes=['*'])
         for i in response:
-            searchObj = re.search('uid=\w+', i['dn'])
+            uidRegex = re.compile(r'(uid)=(\w+)')
+            searchObj = uidRegex.search(i['dn'])
             if searchObj:
-                uidlist.append(searchObj.group().strip('uid='))
+                uidlist.append(searchObj.group(2))
         return uidlist
+
 
     def ldap_add_user(self, uid, ou):
         conn = self.ldap_conn()
