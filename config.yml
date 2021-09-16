@@ -1,0 +1,10 @@
+---
+ldap:
+  server: 10.10.111.159
+  user: cn=admin,dc=demo,dc=com
+  password: 123456
+jenkins:
+  server: 10.10.111.201
+  port: 8080
+  user: admin
+  token: 116c82f41b96860fd566d04ec7244d1965

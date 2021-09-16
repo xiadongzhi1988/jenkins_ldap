@@ -3,9 +3,9 @@ from myldap import ldapuser
 import sys
 
 
-ldap_server = '10.10.111.159'
-ldap_user = 'cn=admin,dc=demo,dc=com'
-ldap_pwd = '123456'
+# ldap_server = '10.10.111.159'
+# ldap_user = 'cn=admin,dc=demo,dc=com'
+# ldap_pwd = '123456'
 ldap_search_base = 'ou=jenkins,dc=demo,dc=com'
 
 
@@ -15,7 +15,7 @@ if len(sys.argv) < 3:
     quit(111)
 else:
     ou = sys.argv[-1]
-    l = ldapuser.LdapOps(ldap_server, ldap_user, ldap_pwd)
+    l = ldapuser.LdapOps()
     for i in range(1, len(sys.argv) - 1):
         l.ldap_add_user(sys.argv[i], ou)
 

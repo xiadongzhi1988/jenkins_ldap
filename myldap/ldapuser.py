@@ -2,12 +2,15 @@ from ldap3 import Server,Connection,ALL,SUBTREE,ALL_ATTRIBUTES,MODIFY_REPLACE,MO
 import time
 import re
 from passlib.hash import  ldap_salted_sha1 as ssha
+import yaml
 
 class LdapInit():
-    def __init__(self, ldap_server=None, ldap_user=None, ldap_pwd=None):
-        self.ldap_server = ldap_server
-        self.ldap_user = ldap_user
-        self.ldap_pwd = ldap_pwd
+    def __init__(self):
+        with open('config.yml') as conf_file:
+            lconf = yaml.load(conf_file, Loader=yaml.BaseLoader)
+            self.ldap_server = lconf['ldap']['server']
+            self.ldap_user = lconf['ldap']['user']
+            self.ldap_pwd = lconf['ldap']['password']
 
     def ldap_conn(self):
         server = Server(self.ldap_server)
@@ -15,8 +18,8 @@ class LdapInit():
         return conn
 
 class LdapOps(LdapInit):
-    def __init__(self, ldap_server=None, ldap_user=None, ldap_pwd=None):
-        super().__init__(ldap_server, ldap_user, ldap_pwd)
+    def __init__(self):
+        super().__init__()
 
     # def ldap_get_uid(self, ldap_search_base):
     #     uidlist = []

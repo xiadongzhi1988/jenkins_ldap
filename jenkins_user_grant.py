@@ -29,27 +29,32 @@ def role_cancel_user(role_type, role_name, username):
 # j.token = '1130c5e4c3968bfe4c64edb9f0a8ecc5c5'
 
 
-#new_pre_jenkins
-j = jenkinsrole.JenkinsRole('10.10.111.201', 'admin')
-j.host = "10.10.111.201"
-j.port = 8080
-j.username = "admin"
-j.token = '116c82f41b96860fd566d04ec7244d1965'
+#my_jenkins
+# j = jenkinsrole.JenkinsRole('10.10.111.201', 'admin')
+# j.host = "10.10.111.201"
+# j.port = 8080
+# j.username = "admin"
+# j.token = '116c82f41b96860fd566d04ec7244d1965'
 
+
+j = jenkinsrole.JenkinsRole()
 
 global_role_type = 'globalRoles'
 global_role_name = 'base'
 
 role_type = 'projectRoles'
-# role_name = 'item_attachment'
+# role_name = 'item_admin'
 # role_pattern = '.*attachment.*'
 
-user = 'xdz10'
+user = 'xdz11'
 
 # role_to_user(global_role_type, global_role_name, user)
 # role_to_user(role_type, role_name, user)
 # get_role_info(role_type, role_name)
 
+role_list = ['item_cp', 'item_crm', 'item_design', 'item_dms', 'item_guimo']
+# for role_name in role_list:
+#     role_to_user(role_type, role_name, user)
 
 # for role_pattern in role_pattern_list:
 #     res_code = j.add_role(role_type, role_name, permissions, role_pattern)

@@ -1,23 +1,26 @@
 import requests
 import json
+import yaml
 
 class JenkinsRole:
-    def __init__(self, host, username, port=8080, password=None, token=None, ssl=False):
-        """
-        password和token使用其中一个即可
-        :param host: Jenkins主机
-        :param username: 管理员用户
-        :param port: Jenkins端口
-        :param password: 管理员密码
-        :param token: 管理员的Token
-        :param ssl: Jenkins地址是否是https协议
-        """
-        self.host = host
-        self.username = username
-        self.port = port
-        self.password = password
-        self.token = token
-        self.ssl = ssl
+    def __init__(self, password=None, ssl=False):
+        with open('config.yml') as conf_file:
+            jconf = yaml.load(conf_file, Loader=yaml.BaseLoader)
+            """
+            password和token使用其中一个即可
+            :param host: Jenkins主机
+            :param username: 管理员用户
+            :param port: Jenkins端口
+            :param password: 管理员密码
+            :param token: 管理员的Token
+            :param ssl: Jenkins地址是否是https协议
+            """
+            self.host = jconf['jenkins']['server']
+            self.username = jconf['jenkins']['user']
+            self.port = jconf['jenkins']['port']
+            self.password = password
+            self.token = jconf['jenkins']['token']
+            self.ssl = ssl
 
     @property
     def pwd_or_token(self):

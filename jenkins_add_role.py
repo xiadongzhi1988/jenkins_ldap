@@ -1,11 +1,12 @@
 import myjenkins
 from myjenkins import jenkinsrole
 
-j = jenkinsrole.JenkinsRole('10.10.111.201', 'admin')
-j.host = "10.10.111.201"
-j.port = 8080
-j.username = "admin"
-j.token = '116c82f41b96860fd566d04ec7244d1965'
+
+# j = jenkinsrole.JenkinsRole('10.10.111.201', 'admin')
+# j.host = "10.10.111.201"
+# j.port = 8080
+# j.username = "admin"
+# j.token = '116c82f41b96860fd566d04ec7244d1965'
 
 
 role_type = 'projectRoles'
