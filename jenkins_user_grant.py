@@ -43,16 +43,16 @@ global_role_type = 'globalRoles'
 global_role_name = 'base'
 
 role_type = 'projectRoles'
-# role_name = 'item_admin'
+role_name = 'item_admin'
 # role_pattern = '.*attachment.*'
 
 user = 'xdz11'
 
 # role_to_user(global_role_type, global_role_name, user)
 # role_to_user(role_type, role_name, user)
-# get_role_info(role_type, role_name)
+get_role_info(role_type, role_name)
 
-role_list = ['item_cp', 'item_crm', 'item_design', 'item_dms', 'item_guimo']
+# role_list = ['item_cp', 'item_crm', 'item_design', 'item_dms', 'item_guimo']
 # for role_name in role_list:
 #     role_to_user(role_type, role_name, user)
 
