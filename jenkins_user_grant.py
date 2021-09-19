@@ -47,7 +47,7 @@ role_type = 'projectRoles'
 # role_name = 'item_admin'
 # role_pattern = '.*attachment.*'
 
-user = 'xdz11'
+# user = 'xdz11'
 
 # role_to_user(global_role_type, global_role_name, user)
 # role_to_user(role_type, role_name, user)
@@ -60,7 +60,6 @@ user = 'xdz11'
 
 if len(sys.argv) < 3:
     print('Usage:', sys.argv[0], 'role1', 'role2', '...', 'username')
-    # quit(111)
 else:
     user = sys.argv[-1]
     for i in range(1, len(sys.argv) - 1):
