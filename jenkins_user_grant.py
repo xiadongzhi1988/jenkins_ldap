@@ -4,6 +4,7 @@ import myldap
 from myldap import ldapuser
 import json
 import re
+import sys
 
 #获取role信息
 def get_role_info(role_type, role_name):
@@ -43,18 +44,27 @@ global_role_type = 'globalRoles'
 global_role_name = 'base'
 
 role_type = 'projectRoles'
-role_name = 'item_admin'
+# role_name = 'item_admin'
 # role_pattern = '.*attachment.*'
 
 user = 'xdz11'
 
 # role_to_user(global_role_type, global_role_name, user)
 # role_to_user(role_type, role_name, user)
-get_role_info(role_type, role_name)
+# get_role_info(role_type, role_name)
 
 # role_list = ['item_cp', 'item_crm', 'item_design', 'item_dms', 'item_guimo']
 # for role_name in role_list:
 #     role_to_user(role_type, role_name, user)
+    # role_cancel_user(role_type, role_name, user)
+
+if len(sys.argv) < 3:
+    print('Usage:', sys.argv[0], 'role1', 'role2', '...', 'username')
+    quit(111)
+else:
+    user = sys.argv[-1]
+    for i in range(1, len(sys.argv) - 1):
+        role_to_user(role_type, sys.argv[i], user)
 
 # for role_pattern in role_pattern_list:
 #     res_code = j.add_role(role_type, role_name, permissions, role_pattern)
