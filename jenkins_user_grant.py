@@ -60,7 +60,7 @@ user = 'xdz11'
 
 if len(sys.argv) < 3:
     print('Usage:', sys.argv[0], 'role1', 'role2', '...', 'username')
-    quit(111)
+    # quit(111)
 else:
     user = sys.argv[-1]
     for i in range(1, len(sys.argv) - 1):
