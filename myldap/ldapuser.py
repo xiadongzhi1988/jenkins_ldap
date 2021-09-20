@@ -11,6 +11,7 @@ class LdapInit():
             self.ldap_server = lconf['ldap']['server']
             self.ldap_user = lconf['ldap']['user']
             self.ldap_pwd = lconf['ldap']['password']
+            self.ldap_base = lconf['ldap']['ldap_base']
 
     def ldap_conn(self):
         server = Server(self.ldap_server)

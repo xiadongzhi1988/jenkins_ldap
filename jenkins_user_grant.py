@@ -22,6 +22,20 @@ def role_cancel_user(role_type, role_name, username):
     res = j.unassign_role(role_type, role_name, username)
     print('%s del %s %d' %(username, role_name, res))
 
+#检查ldap用户是否存在
+def ldap_user_exist(search_user):
+    l = ldapuser.LdapOps()
+    userlist = l.ldap_get_uid(l.ldap_base)
+    flag = 0
+    for user in userlist:
+        if search_user == user:
+            flag = 1
+    return flag
+
+
+# res = ldap_user_exist('xdz10')
+# print(res)
+
 #new_pre_jenkins
 # j = jenkinsrole.JenkinsRole('192.168.41.29', '5010905')
 # j.host = "192.168.41.29"
@@ -62,8 +76,11 @@ if len(sys.argv) < 3:
     print('Usage:', sys.argv[0], 'role1', 'role2', '...', 'username')
 else:
     user = sys.argv[-1]
-    for i in range(1, len(sys.argv) - 1):
-        role_to_user(role_type, sys.argv[i], user)
+    if ldap_user_exist(user):
+        for i in range(1, len(sys.argv) - 1):
+            role_to_user(role_type, sys.argv[i], user)
+    else:
+        print(user, '不存在')
 
 # for role_pattern in role_pattern_list:
 #     res_code = j.add_role(role_type, role_name, permissions, role_pattern)

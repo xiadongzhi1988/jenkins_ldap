@@ -3,6 +3,7 @@ ldap:
   server: 10.10.111.159
   user: cn=admin,dc=demo,dc=com
   password: 123456
+  ldap_base: dc=demo,dc=com
 jenkins:
   server: 10.10.111.201
   port: 8080
